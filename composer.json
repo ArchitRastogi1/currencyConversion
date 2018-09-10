@@ -1,0 +1,25 @@
+{
+    "autoload": {
+        "psr-4": {
+            "models\\": "src/app/models/",
+	    "services\\": "src/app/services",
+	    "validators\\": "src/app/validators",
+	    "routes\\": "src/app/routes",
+	    "dependencies\\": "src/app/dependencies",
+            "exceptions\\": "src/app/exceptions",
+	    "commands\\": "src/app/commands",
+            "daos\\": "src/app/daos",
+            "utils\\": "src/app/utils"
+        }
+    },
+    "require": {
+        "slim/slim": "^3.10",
+        "xe/xecd-rates-client": "^0.1.1",
+        "monolog/monolog": "^1.23",
+        "symfony/console": "^3.4",
+        "predis/predis": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6"
+    }
+}

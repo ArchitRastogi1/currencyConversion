@@ -1,0 +1,29 @@
+{
+    "name": "xe/xecd-rates-core-component",
+    "type": "library",
+    "description": "Provides XECD Rates related features.",
+    "keywords": [
+        "xe",
+        "xecd",
+        "rates"
+    ],
+    "homepage": "http://www.xe.com",
+    "license": "MPL-2.0",
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "authors": [
+        {
+            "name": "XE.com Development Team",
+            "homepage": "http://www.xe.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Xe\\Xecd\\Component\\Rates\\Core\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    }
+}
