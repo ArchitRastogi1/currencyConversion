@@ -1,9 +1,9 @@
-This is a currency conversion service.-Refer to postman collection for more details.
+This is a currency conversion service -Refer to postman collection for more details. </br>
 
-Technologies - PHP, Mysql
-Framework - Slim
-Cache - Redis
-Logging - Monolog
+Technologies - PHP, Mysql </br>
+Framework - Slim </br>
+Cache - Redis </br>
+Logging - Monolog </br>
 
 
 ![image description](https://github.com/ArchitRastogi1/currencyConversion/blob/master/images/service-flow.png)
