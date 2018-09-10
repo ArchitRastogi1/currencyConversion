@@ -169,3 +169,6 @@
 [2018-09-11 00:01:58] my_logger.INFO: Request for :from:INR to:USD quantity:100 [] []
 [2018-09-11 00:01:59] my_logger.INFO: Request for :from:INR to:USD quantity:100 [] []
 [2018-09-11 00:02:00] my_logger.INFO: Request for :from:INR to:USD quantity:100 [] []
+[2018-09-11 00:40:38] my_logger.INFO: Request for :from:INR to:USD quantity:100 [] []
+[2018-09-11 00:40:42] my_logger.INFO: Request for :INR [] []
+[2018-09-11 00:41:12] my_logger.INFO: Request for :INR [] []

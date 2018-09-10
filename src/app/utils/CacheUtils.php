@@ -1,6 +1,7 @@
 <?php
 
 namespace utils;
+use models\Currency;
 
 class CacheUtils {
     
