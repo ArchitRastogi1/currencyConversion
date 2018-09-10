@@ -1,0 +1,54 @@
+{
+	"id": "9beeb62c-b10f-589e-62b6-57a1b1c79221",
+	"name": "Currency Conversion Service",
+	"description": "# Introduction\nThere are two apis\n1 - Conversion API - It converts some amount of one currency to other currency.\n2 - Currency Rates List - It returns a list of all currencies and their rates.\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Codes\n400 - Bad Request\n200 - OK\n\n# Rate limit\nIs there a limit to the number of requests an user can send? Yes",
+	"order": [
+		"4fe049be-5a54-eefe-7fc9-591a2110e58b",
+		"a712355b-3ddd-fdd5-9cd5-1081e0c15fda"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1536606620500,
+	"owner": "5320508",
+	"public": false,
+	"requests": [
+		{
+			"id": "4fe049be-5a54-eefe-7fc9-591a2110e58b",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/src/public/currency-converter/from/INR/to/USD/amount/100",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1536606679141,
+			"name": "http://localhost:8080/src/public/currency-converter/from/INR/to/USD/amount/100",
+			"collectionId": "9beeb62c-b10f-589e-62b6-57a1b1c79221"
+		},
+		{
+			"id": "a712355b-3ddd-fdd5-9cd5-1081e0c15fda",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/src/public/currency-converter/list/INR",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1536606674937,
+			"name": "http://localhost:8080/src/public/currency-converter/list/INR",
+			"collectionId": "9beeb62c-b10f-589e-62b6-57a1b1c79221"
+		}
+	]
+}
