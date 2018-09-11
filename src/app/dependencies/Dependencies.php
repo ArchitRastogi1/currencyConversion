@@ -1,5 +1,7 @@
 <?php
 
+//This file will be cached at the time of starting application and put into some cache folder
+
 $container = $app->getContainer();
 
 
@@ -53,4 +55,8 @@ $container['\commands\CurrencyListJob'] = function($c) {
 
 $container['\services\cacheClients\RedisService'] = function($c) {
     return new services\cacheClients\RedisService();
+};
+
+$container['errorHandler'] = function ($container) {
+    return new \exceptions\ExceptionHandler();
 };

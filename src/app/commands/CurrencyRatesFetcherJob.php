@@ -7,7 +7,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use models\Currency;
 use services\CurrencyService;
 
-class CurrencyRatesJob extends Command {
+class CurrencyRatesFetcherJob extends Command {
     
     private $currencyService;
 

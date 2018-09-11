@@ -6,7 +6,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use services\CurrencyService;
 
-class CurrencyListJob extends Command {
+class CurrencyListFetcherJob extends Command {
     
     private $currencyService;
 

@@ -20,6 +20,7 @@ class XeConversion implements Conversion {
     public function getCurrencyList() {
         $response = NULL;
         $count = 1;
+        // this function will retry 3 times in case of exception from service
         while(empty($response) && $count <= 3) {
             try {
                 $response = $this->pestService->get(XeConfiguration::CURRENCY_LIST_API_URL);
@@ -33,7 +34,9 @@ class XeConversion implements Conversion {
                 $count++;
             }
         }
-        
+        $this->logger->addCritical("Maximum retry done");
+        throw new CurlException("Maximum Retry done", 500);
+        // put the data in failed queeu for retry
     }
     
     public function getExchangeRates($sourceCurrency, $targetCurrency) {
@@ -41,6 +44,7 @@ class XeConversion implements Conversion {
         $requestData['from'] = $sourceCurrency;
         $requestData['to'] = $targetCurrency;
         $count = 1;
+        // this function will retry 3 times in case of exception from service
         while(empty($response) && $count <= 3) {
             try {
                 $response = $this->pestService->get(XeConfiguration::CURRENCY_CONVERTION_API_URL, $requestData);
@@ -50,7 +54,9 @@ class XeConversion implements Conversion {
                 $count++;
             }
         }
-        
+        $this->logger->addCritical("Maximum retry done");
+        throw new CurlException("Maximum Retry done", 500);
+        // put the data in failed queeu for retry
     }
     
 }

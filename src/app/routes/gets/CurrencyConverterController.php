@@ -22,13 +22,9 @@ class CurrencyConverterController {
         $args = $this->getArguments($request);
         $conversionRequest = new ConversionRequest($args);
         $this->logger->addInfo("Request for :".$conversionRequest);
-        try {
-            $data = $this->currencyService->convertCurrency($conversionRequest);
-            $response->getBody()->write(json_encode($data));
-            return $response;
-        } catch(ValidationException $ex) {
-            
-        }
+        $data = $this->currencyService->convertCurrency($conversionRequest);
+        $response->getBody()->write(json_encode($data));
+        return $response;
     }
     
     public function currencyRateList(Request $request, Response $response) {
