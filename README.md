@@ -80,7 +80,10 @@ src </br>
 2 – Caching to serve fast and not make much load on database tables. </br>
 3 -  Keeping historyLogId to get back currency information from historyId if required. </br>
 4 – Code is flexible to change conversion service and cache service. </br>
-5 – Retry logic from code and queue (optional) to handle conversion service api failures. </br>
+
+In Case Service is Down - </br>
+1- Retry 3 times from Code. </br>
+2- Put failure in queue (optional) and process retry. </br>
 
 <b> Other Features to be add at server level - </b> </br>
 1 – Add a load balancer to distriute traffic on multiple servers </br>
