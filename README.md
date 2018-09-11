@@ -11,7 +11,7 @@ Libraries – Monolog </br>
 <b>Database Tables - </b>  </br>
 
 1 - ConversionHistoryLog – history log of all the conversion which maintains conversion rates along with a  historyId. </br>
-2 - LatestCurrencyRates – latest conversion rates fetched by periodic job </br>
+2 - LatestCurrencyRates – latest conversion rates with respect to one currency fetched by periodic job </br>
 3 - CurrencyList – list of all the currencies </br>
 4 – FailedQueue – keeps failed api record and re-run the jobs if required. // (optional) </br>
 
@@ -94,8 +94,8 @@ src </br>
 4 - create db schema from `src/app/resources/CurrencyConversion.sql` <br/>
 5 - php -S localhost:8080 <br/>
 6 - run commands -  <br/>
-`php CliCurrencyList.php get:currency-list` <br/>
-`php CliCurrencyRates.php get:currency-rates` <br/>
+`php src/app/commands/CliCurrencyList.php get:currency-list` <br/>
+`php src/app/commands/CliCurrencyRates.php get:currency-rates` <br/>
 6 - http://localhost:8080/src/public/v1/currency-converter/from/INR/to/USD/amount/100 <br/>
 7 - http://localhost:8080/src/public/v1/currency-converter/list/USD <br/>
 
