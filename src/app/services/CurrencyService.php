@@ -69,6 +69,7 @@ class CurrencyService {
         return $currencyCodeList;
     }
     
+    /* fetches currency exchnage rates from conversion service */
     public function getExchangeRatesFromClient($sourceCurrency, $targetCurrencyList) {
         $response = $this->conversionClient->getExchangeRates($sourceCurrency, $targetCurrencyList);
         $currencyRateList = array();

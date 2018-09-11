@@ -54,7 +54,8 @@ $container['\commands\CurrencyListJob'] = function($c) {
 };
 
 $container['\services\cacheClients\RedisService'] = function($c) {
-    return new services\cacheClients\RedisService();
+    $logger = $c->get('logger');
+    return new services\cacheClients\RedisService($logger);
 };
 
 $container['errorHandler'] = function ($container) {

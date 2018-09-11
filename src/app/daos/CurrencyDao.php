@@ -5,20 +5,18 @@ use Monolog\Logger;
 use PDOException;
 use Exception;
 use PDO;
-use models\tables\CurrencyRate;
+use models\configs\DatabaseConfiguration;
 
 class CurrencyDao {
     
     private $logger;
-    private $dsn = 'mysql:dbname=archit;host=192.168.2.116;port=3348';
-    private $user = 'smcluster';
-    private $password = 'smKm7Iv80l';
     private $db;
     
     public function __construct(Logger $logger) {
         $this->logger = $logger;
         if(empty($this->db)) {
-            $this->db = new PDO($this->dsn,$this->user,$this->password);
+            // this configuration will be moved to a yaml file.
+            $this->db = new PDO(DatabaseConfiguration::MYSQL_DSN, DatabaseConfiguration::MYSQL_USER, DatabaseConfiguration::MYSQL_PASSWORD);
         }
     }
     
