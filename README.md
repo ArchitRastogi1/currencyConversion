@@ -90,7 +90,7 @@ src </br>
 <b> How to Run this application </b> - <br/>
 1 - Take Clone - https://github.com/ArchitRastogi1/currencyConversion.git <br/>
 2 - cd currencyConversion <br/>
-3-  change mysql and redis configuration in `src/app/models/configs/Configuration.php` <br/>
+3-  change mysql and redis configuration in `src/app/models/configs/DatabaseConfiguration.php` <br/>
 4 - php -S localhost:8080 <br/>
 5 - http://localhost:8080/src/public/currency-converter/from/INR/to/USD/amount/100 <br/>
 6 - http://localhost:8080/src/public/currency-converter/list/USD <br/>
