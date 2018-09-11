@@ -2,14 +2,13 @@
 
 require __DIR__.'/../../../vendor/autoload.php';
 
-use commands\CurrencyListJob;
 use Symfony\Component\Console\Application;
-use commands\CurrencyRatesFetcherJob;
+use commands\CurrencyListFetcherJob;
 
 $container = new Slim\Container();
 $app = new Slim\App($container);
 require '../dependencies/Dependencies.php';
-$command = new CurrencyRatesFetcherJob($container['\services\CurrencyService']);
+$command = new CurrencyListFetcherJob($container['\services\CurrencyService']);
 
 $application = new Application();
 $application->add($command);
