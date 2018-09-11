@@ -11,7 +11,7 @@ Libraries – Monolog </br>
 <b>Database Tables - </b>  </br>
 
 1 - ConversionHistoryLog – history log of all the conversion which maintains conversion rates along with a  historyId. </br>
-2 - LatestCurrencyRates – latest conversion rates fetched by periodic job </br>
+2 - LatestCurrencyRates – latest conversion rates with respect to one currency fetched by periodic job </br>
 3 - CurrencyList – list of all the currencies </br>
 4 – FailedQueue – keeps failed api record and re-run the jobs if required. // (optional) </br>
 
