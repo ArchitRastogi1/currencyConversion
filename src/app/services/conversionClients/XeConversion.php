@@ -3,7 +3,7 @@
 namespace services\conversionClients;
 use services\Pest;
 use models\configs\XeConfiguration;
-use models\CurrencyList;
+use models\tables\CurrencyList;
 use Monolog\Logger;
 use exceptions\CurlException;
 
