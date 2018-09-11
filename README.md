@@ -24,7 +24,7 @@ Libraries – Monolog </br>
 
 <b>Endpoints - </b> </br>
 
-1 – GET /currency-converter/from/<from-currency-code>/to/<to-currency-code>/amount/<amount> </br>
+1 – GET /v1/currency-converter/from/<from-currency-code>/to/<to-currency-code>/amount/<amount> </br>
 Response - </br>
 200 – </br> {"from":"INR","to":"USD","amount":"100","convertedAmount":1.3868711980916,"historyLogId":"1536537600"} </br>
 400 - </br>
@@ -32,7 +32,7 @@ Response - </br>
 {"message":"From Currency Code is not Correct"} </br>
 {"message":"To Currency Code is not Correct"} </br>
 
-2 – GET /currency-converter/list/<currency-code> </br>
+2 – GET /v1/currency-converter/list/<currency-code> </br>
 Response - </br>
 200 -  </br>
 [{"exchangeRates":2.1255127591,"currency":"FJD"}, {"exchangeRates":19.3286332708,"currency":"MXN"},{"exchangeRates":21151.950535817,"currency":"STD"},{"exchangeRates":13.6476390471,"currency":"SCR"},{"exchangeRates":1.4056440417,"currency":"TVD"},{"exchangeRates":1613.0276697267,"currency":"CDF"}] ... </br>
@@ -91,9 +91,10 @@ src </br>
 1 - Take Clone - https://github.com/ArchitRastogi1/currencyConversion.git <br/>
 2 - cd currencyConversion <br/>
 3-  change mysql and redis configuration in `src/app/models/configs/DatabaseConfiguration.php` <br/>
-4 - php -S localhost:8080 <br/>
-5 - http://localhost:8080/src/public/currency-converter/from/INR/to/USD/amount/100 <br/>
-6 - http://localhost:8080/src/public/currency-converter/list/USD <br/>
+4 - create db schema from `src/app/resources/CurrencyConversion.sql`
+5 - php -S localhost:8080 <br/>
+6 - http://localhost:8080/src/public/v1/currency-converter/from/INR/to/USD/amount/100 <br/>
+7 - http://localhost:8080/src/public/v1/currency-converter/list/USD <br/>
 
 ![image description](https://github.com/ArchitRastogi1/currencyConversion/blob/master/images/service-flow.png)
 ![image description](https://github.com/ArchitRastogi1/currencyConversion/blob/master/images/job-flow.png)
