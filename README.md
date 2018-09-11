@@ -99,5 +99,3 @@ src </br>
 6 - http://localhost:8080/src/public/v1/currency-converter/from/INR/to/USD/amount/100 <br/>
 7 - http://localhost:8080/src/public/v1/currency-converter/list/USD <br/>
 
-![image description](https://github.com/ArchitRastogi1/currencyConversion/blob/master/images/service-flow.png)
-![image description](https://github.com/ArchitRastogi1/currencyConversion/blob/master/images/job-flow.png)
