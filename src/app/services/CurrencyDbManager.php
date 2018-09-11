@@ -15,8 +15,10 @@ class CurrencyDbManager {
         return $this->currencyDao->getCurrencyCodesList();
     }
     
-    public function insertExchangeRatesInLatestCurrencyRates($currencyRatesList) {
-        return $this->currencyDao->insertExchangeRatesInLatestCurrencyRates($currencyRatesList);
+    public function insertExchangeRatesInLatestCurrencyRates($currencyRateList) {
+        foreach($currencyRateList as $latestCurrencyRate) {
+            $this->currencyDao->insertExchangeRatesInLatestCurrencyRates($latestCurrencyRate);
+        }
     }
     
     public function getLatestExchangeRates($sourceCurrency, $targetCurrency) {

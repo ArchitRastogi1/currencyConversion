@@ -10,6 +10,7 @@ use services\CurrencyDbManager;
 use models\Currency;
 use services\cacheClients\CacheService;
 use utils\CacheUtils;
+use Slim\Exception\NotFoundException;
 
 
 class CurrencyService {
@@ -35,7 +36,21 @@ class CurrencyService {
         $targetCurrency = $conversionRequest->getTo();
         $amount = $conversionRequest->getAmount();
 
-        // check if conversion rates are already present in cache 
+        $exchangeData = $this->getExchageDataForConversion($sourceCurrency, $targetCurrency);
+        $exchangeRate = $exchangeData['exchangeRate'];
+        $historyLogId = $exchangeData['historyLogId'];
+        
+        // This case will probably never happen
+        if(empty($exchangeRate) || empty($historyLogId)) {
+            throw new NotFoundException("Request Data is Not Found", 400);
+        }
+        $convertedAmount = $exchangeRate*$amount;
+        return array("from" => $sourceCurrency, "to" => $targetCurrency, "amount" => $amount, 
+            "convertedAmount" => $convertedAmount, "historyLogId" => $historyLogId);
+    }
+    
+    private function getExchageDataForConversion($sourceCurrency, $targetCurrency) {
+         // check if conversion rates are already present in cache 
         $key = CacheUtils::getConversionKey($sourceCurrency, $targetCurrency);
         $exchangeRateData = $this->cacheService->getData($key);
         if(count($exchangeRateData)) {
@@ -52,9 +67,7 @@ class CurrencyService {
             //store data in cache
             $this->cacheService->setData($key, array('exchangeRates' => $exchangeRate,'historyLogId' => $historyLogId));
         }
-        $convertedAmount = $exchangeRate*$amount;
-        return array("from" => $sourceCurrency, "to" => $targetCurrency, "amount" => $amount, 
-            "convertedAmount" => $convertedAmount, "historyLogId" => $historyLogId);
+        return array('exchangeRate' => $exchangeRate, 'historyLogId' => $historyLogId);
     }
     
     public function getCurrencyCodesList() {
@@ -98,7 +111,8 @@ class CurrencyService {
     }
     
     public function insertCurrencyList($currencyList) {
-        return $this->currencyDbManager->insertCurrencyList($currencyList);
+        $this->currencyDbManager->insertCurrencyList($currencyList);
+        $this->cacheService->flushData(CacheUtils::getCurrencyListKey());
     }
     
     public function getCurrencyRateList($sourceCurrency) {
@@ -106,6 +120,10 @@ class CurrencyService {
         RequestValidator::validateCurrencySource($sourceCurrency, $currencyCodesList);
         $responseArray = array();
         $exchangeRatesListForBase = $this->fetchBaseCurrenyExchangeRateList();
+        // This case will probably never happen
+        if(empty($exchangeRatesListForBase) || count($exchangeRatesListForBase) == 0) {
+            throw new NotFoundException("Requested Data is not Found");
+        }
         // get currency rates with respect to base currency
         $sourceCurrencyExchangeRate = $this->getSourceCurrencyExchangeRate($sourceCurrency, $exchangeRatesListForBase);
         $i=0;

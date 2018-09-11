@@ -5,6 +5,9 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Exception;
 
+/**
+ * This file is use to handle exception cases
+ */
 class ExceptionHandler {
     
     public function __invoke(Request $request, Response $response, Exception $ex) {

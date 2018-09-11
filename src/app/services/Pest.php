@@ -5,6 +5,7 @@ use exceptions\CurlException;
 use models\configs\XeConfiguration;
 use Exception;
 use Monolog\Logger;
+use models\errors\CurlError;
 
 class Pest {
     
@@ -38,8 +39,8 @@ class Pest {
             $response = curl_exec($curlHandle);
             return json_decode($response,true);
         } catch(Exception $ex) {
-            $this->logger->addCritical($ex->getMessage());
-            throw new CurlException("Exception in fetching data",500, $ex);
+            $this->logger->addCritical(CurlError::CURL_REQUEST_ERROR.$ex->getMessage());
+            throw new CurlException(CurlError::CURL_REQUEST_ERROR,500, $ex);
         }
         curl_close($curlHandle);
     }
@@ -48,7 +49,8 @@ class Pest {
         $url = trim($url);
         $curlHandle = curl_init($url);
         if($curlHandle === false) {
-            throw new CurlException("Curl init error");
+            $this->logger->addCritical(CurlError::CURL_REQUEST_ERROR);
+            throw new CurlException(CurlError::CURL_REQUEST_ERROR,500);
         }
         foreach ($opts as $opt => $val) {
             curl_setopt($curlHandle, $opt, $val);

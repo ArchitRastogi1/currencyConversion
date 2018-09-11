@@ -39,24 +39,18 @@ class CurrencyDao {
         }
     }
     
-    public function insertExchangeRatesInLatestCurrencyRates($currencyRatesArray) {
+    public function insertExchangeRatesInLatestCurrencyRates($latestCurrencyRate) {
         try {
-            $count = count($currencyRatesArray);
-            $sqlStmt = "replace into LatestCurrencyRates (sourceCurrency, targetCurrency, exchangeRates, pollingTime, historyLogId) values ";
-            for($i=0;$i<$count;$i++) {
-                $sqlStmt.= "(:sourceCurrency_$i, :targetCurrency_$i, :exchangeRates_$i, :pollingTime_$i, :historyLogId_$i),";
-            }
-            $sqlStmt = rtrim($sqlStmt, ",");
+            $sqlStmt = "insert ignore into LatestCurrencyRates (sourceCurrency, targetCurrency, exchangeRates, pollingTime, historyLogId) "
+                    . "values (:sourceCurrency, :targetCurrency, :exchangeRates, :pollingTime, :historyLogId)";
+            
             $prepareStmt = $this->db->prepare($sqlStmt);
-            $i=0;
-            foreach($currencyRatesArray as $currencyRates) {
-                $prepareStmt->bindValue(":sourceCurrency_".$i, $currencyRates->getSourceCurrency(), PDO::PARAM_STR);
-                $prepareStmt->bindValue(":targetCurrency_".$i, $currencyRates->getTargetCurrency(), PDO::PARAM_STR);
-                $prepareStmt->bindValue(":exchangeRates_".$i, $currencyRates->getExchangeRates(), PDO::PARAM_STR);
-                $prepareStmt->bindValue(":pollingTime_".$i, $currencyRates->getPollingTime(), PDO::PARAM_STR);
-                $prepareStmt->bindValue(":historyLogId_".$i, $currencyRates->getHistoryLogId(), PDO::PARAM_STR);
-                $i++;
-            }
+            $prepareStmt->bindValue(":sourceCurrency", $latestCurrencyRate->getSourceCurrency(), PDO::PARAM_STR);
+            $prepareStmt->bindValue(":targetCurrency", $latestCurrencyRate->getTargetCurrency(), PDO::PARAM_STR);
+            $prepareStmt->bindValue(":exchangeRates", $latestCurrencyRate->getExchangeRates(), PDO::PARAM_STR);
+            $prepareStmt->bindValue(":pollingTime", $latestCurrencyRate->getPollingTime(), PDO::PARAM_STR);
+            $prepareStmt->bindValue(":historyLogId", $latestCurrencyRate->getHistoryLogId(), PDO::PARAM_STR);
+            
             $prepareStmt->execute();
             return true;
         } catch(PDOException $ex) {

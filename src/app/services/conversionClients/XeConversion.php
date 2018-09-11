@@ -34,7 +34,7 @@ class XeConversion implements Conversion {
                 $count++;
             }
         }
-        $this->logger->addCritical("Maximum retry done");
+        $this->logger->addEmergency("Maximum retry done");
         throw new CurlException("Maximum Retry done", 500);
         // put the data in failed queeu for retry
     }
@@ -54,7 +54,7 @@ class XeConversion implements Conversion {
                 $count++;
             }
         }
-        $this->logger->addCritical("Maximum retry done");
+        $this->logger->addEmergency("Maximum retry done");
         throw new CurlException("Maximum Retry done", 500);
         // put the data in failed queeu for retry
     }
