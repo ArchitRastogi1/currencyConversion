@@ -112,7 +112,7 @@ class CurrencyService {
     
     public function insertCurrencyList($currencyList) {
         $this->currencyDbManager->insertCurrencyList($currencyList);
-        $this->cacheService->flushData(CacheUtils::getCurrencyListKey());
+        $this->cacheService->flushData();
     }
     
     public function getCurrencyRateList($sourceCurrency) {
