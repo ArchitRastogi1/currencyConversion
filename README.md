@@ -94,3 +94,6 @@ src </br>
 4 - php -S localhost:8080 <br/>
 5 - http://localhost:8080/src/public/currency-converter/from/INR/to/USD/amount/100 <br/>
 6 - http://localhost:8080/src/public/currency-converter/list/USD <br/>
+
+![image description](https://github.com/ArchitRastogi1/currencyConversion/blob/master/images/service-flow.png)
+![image description](https://github.com/ArchitRastogi1/currencyConversion/blob/master/images/job-flow.png)
