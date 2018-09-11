@@ -84,6 +84,8 @@ src </br>
 In Case Service is Down - </br>
 1- Retry 3 times from Code. </br>
 2- Put failure in queue (optional) and process retry. </br>
+3- Pingback API  - Fail request will be put in the queue and result can be avaialable to pingback api.</br>
+
 
 <b> Other Features to be add at server level - </b> </br>
 1 – Add a load balancer to distriute traffic on multiple servers </br>
