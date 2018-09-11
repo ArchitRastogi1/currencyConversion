@@ -91,8 +91,11 @@ src </br>
 1 - Take Clone - https://github.com/ArchitRastogi1/currencyConversion.git <br/>
 2 - cd currencyConversion <br/>
 3-  change mysql and redis configuration in `src/app/models/configs/DatabaseConfiguration.php` <br/>
-4 - create db schema from `src/app/resources/CurrencyConversion.sql`
+4 - create db schema from `src/app/resources/CurrencyConversion.sql` <br/>
 5 - php -S localhost:8080 <br/>
+6 - run commands -  <br/>
+php CliCurrencyList.php get:currency-list <br/>
+php CliCurrencyRates.php get:currency-rates <br/>
 6 - http://localhost:8080/src/public/v1/currency-converter/from/INR/to/USD/amount/100 <br/>
 7 - http://localhost:8080/src/public/v1/currency-converter/list/USD <br/>
 
