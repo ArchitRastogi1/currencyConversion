@@ -94,10 +94,8 @@ src </br>
 4 - create db schema from `src/app/resources/CurrencyConversion.sql` <br/>
 5 - php -S localhost:8080 <br/>
 6 - run commands -  <br/>
-php CliCurrencyList.php get:currency-list <br/>
-php CliCurrencyRates.php get:currency-rates <br/>
+`php CliCurrencyList.php get:currency-list` <br/>
+`php CliCurrencyRates.php get:currency-rates` <br/>
 6 - http://localhost:8080/src/public/v1/currency-converter/from/INR/to/USD/amount/100 <br/>
 7 - http://localhost:8080/src/public/v1/currency-converter/list/USD <br/>
 
-![image description](https://github.com/ArchitRastogi1/currencyConversion/blob/master/images/service-flow.png)
-![image description](https://github.com/ArchitRastogi1/currencyConversion/blob/master/images/job-flow.png)
